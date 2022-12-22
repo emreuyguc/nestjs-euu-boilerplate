@@ -1,0 +1,10 @@
+services:
+  app:
+    image: node:18-alpine
+    build:
+      context: ../
+      dockerfile: ./docker/app.dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - ENV=PRODUCTION
