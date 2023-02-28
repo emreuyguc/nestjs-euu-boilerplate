@@ -4,11 +4,14 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
-import { ConfigService } from "@nestjs/config";
-import { CoreModule } from "./core/core.module";
-import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import { ConfigService } from '@nestjs/config';
+import { CoreModule } from './core/core.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { useContainer } from 'class-validator';
-import { AppConfigKey, IAppConfig } from './core/data/configs/app.config';
+import {
+  AppConfigKey,
+  IAppConfig,
+} from './core/shared/data/configs/app.config';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -20,7 +23,6 @@ async function bootstrap() {
   //TODO VALIDATOR CHECK
   app.useGlobalPipes(new ValidationPipe());
   useContainer(app.select(CoreModule), { fallbackOnErrors: true });
-
 
   //TODO CONFIG SET
   const swaggerConfig = new DocumentBuilder()

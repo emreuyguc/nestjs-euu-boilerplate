@@ -1,10 +1,9 @@
-import { IsEmpty, IsNotEmpty } from "class-validator";
+import { IsEmpty, IsNotEmpty } from 'class-validator';
 
-export class JwtPayload{
+export class JwtPayload {
   @IsNotEmpty()
-  id_user:number
+  id_user: number;
 
   @IsNotEmpty()
-  username:string
+  username: string;
 }
-
